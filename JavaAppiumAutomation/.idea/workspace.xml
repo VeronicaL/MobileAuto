@@ -1,14 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c231e8e8-4f21-48bf-9cea-0fa72986fd2b" name="Default Changelist" comment="Task1">
-      <change afterPath="$PROJECT_DIR$/src/MainClass.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/MainClassTest.java" afterDir="false" />
+    <list default="true" id="c231e8e8-4f21-48bf-9cea-0fa72986fd2b" name="Default Changelist" comment="Task3">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/java_client_4_1_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/junit_4_12.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/selenium_server_standalone_3_4_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/FirstTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaAppiumAutomation.iml" beforeDir="false" afterPath="$PROJECT_DIR$/JavaAppiumAutomation.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MainClass.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MainClassTest.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -33,8 +46,21 @@
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JUnit.FirstTest">
+    <configuration name="FirstTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="JavaAppiumAutomation" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="FirstTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="MainClassTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="JavaAppiumAutomation" />
       <option name="PACKAGE_NAME" value="" />
@@ -44,8 +70,20 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="MainClassTest.testGetClassString" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="JavaAppiumAutomation" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="MainClassTest" />
+      <option name="METHOD_NAME" value="testGetClassString" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.FirstTest" />
+        <item itemvalue="JUnit.MainClassTest.testGetClassString" />
         <item itemvalue="JUnit.MainClassTest" />
       </list>
     </recent_temporary>
@@ -68,7 +106,35 @@
       <option name="project" value="LOCAL" />
       <updated>1584651648909</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Task1">
+      <created>1584652067529</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1584652067529</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Additional file">
+      <created>1584652098490</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1584652098491</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Task2">
+      <created>1584706962661</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1584706962661</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Task3">
+      <created>1584707053168</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1584707053168</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -76,7 +142,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
@@ -85,37 +153,56 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="First commit" />
     <MESSAGE value="Task1" />
-    <option name="LAST_COMMIT_MESSAGE" value="Task1" />
+    <MESSAGE value="Additional file" />
+    <MESSAGE value="Task2" />
+    <MESSAGE value="Task3" />
+    <option name="LAST_COMMIT_MESSAGE" value="Task3" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="492" y="265" key="CommitChangelistDialog2" timestamp="1584652067334">
+    <state x="492" y="265" key="CommitChangelistDialog2" timestamp="1585428031924">
       <screen x="0" y="23" width="1920" height="1131" />
     </state>
-    <state x="492" y="265" key="CommitChangelistDialog2/0.23.1920.1131@0.23.1920.1131" timestamp="1584652067334" />
+    <state x="492" y="265" key="CommitChangelistDialog2/0.23.1920.1131@0.23.1920.1131" timestamp="1585428031924" />
     <state x="559" y="254" width="1200" height="800" key="DiffContextDialog" timestamp="1584651925283">
       <screen x="0" y="23" width="1920" height="1131" />
     </state>
     <state x="559" y="254" width="1200" height="800" key="DiffContextDialog/0.23.1920.1131@0.23.1920.1131" timestamp="1584651925283" />
-    <state width="1358" height="271" key="GridCell.Tab.0.bottom" timestamp="1584651545539">
+    <state width="1358" height="314" key="GridCell.Tab.0.bottom" timestamp="1585427600250">
       <screen x="0" y="23" width="1920" height="1131" />
     </state>
-    <state width="1358" height="271" key="GridCell.Tab.0.bottom/0.23.1920.1131@0.23.1920.1131" timestamp="1584651545539" />
-    <state width="1358" height="271" key="GridCell.Tab.0.center" timestamp="1584651545538">
+    <state width="1358" height="314" key="GridCell.Tab.0.bottom/0.23.1920.1131@0.23.1920.1131" timestamp="1585427600250" />
+    <state width="1358" height="314" key="GridCell.Tab.0.center" timestamp="1585427600249">
       <screen x="0" y="23" width="1920" height="1131" />
     </state>
-    <state width="1358" height="271" key="GridCell.Tab.0.center/0.23.1920.1131@0.23.1920.1131" timestamp="1584651545538" />
-    <state width="1358" height="271" key="GridCell.Tab.0.left" timestamp="1584651545537">
+    <state width="1358" height="314" key="GridCell.Tab.0.center/0.23.1920.1131@0.23.1920.1131" timestamp="1585427600249" />
+    <state width="1358" height="314" key="GridCell.Tab.0.left" timestamp="1585427600248">
       <screen x="0" y="23" width="1920" height="1131" />
     </state>
-    <state width="1358" height="271" key="GridCell.Tab.0.left/0.23.1920.1131@0.23.1920.1131" timestamp="1584651545537" />
-    <state width="1358" height="271" key="GridCell.Tab.0.right" timestamp="1584651545538">
+    <state width="1358" height="314" key="GridCell.Tab.0.left/0.23.1920.1131@0.23.1920.1131" timestamp="1585427600248" />
+    <state width="1358" height="314" key="GridCell.Tab.0.right" timestamp="1585427600249">
       <screen x="0" y="23" width="1920" height="1131" />
     </state>
-    <state width="1358" height="271" key="GridCell.Tab.0.right/0.23.1920.1131@0.23.1920.1131" timestamp="1584651545538" />
-    <state x="759" y="395" key="Vcs.Push.Dialog.v2" timestamp="1584652071535">
+    <state width="1358" height="314" key="GridCell.Tab.0.right/0.23.1920.1131@0.23.1920.1131" timestamp="1585427600249" />
+    <state x="2" y="155" key="MergeDialog" timestamp="1585427980125">
       <screen x="0" y="23" width="1920" height="1131" />
     </state>
-    <state x="759" y="395" key="Vcs.Push.Dialog.v2/0.23.1920.1131@0.23.1920.1131" timestamp="1584652071535" />
+    <state x="2" y="155" key="MergeDialog/0.23.1920.1131@0.23.1920.1131" timestamp="1585427980125" />
+    <state x="483" y="342" key="MultipleFileMergeDialog" timestamp="1585427980158">
+      <screen x="0" y="23" width="1920" height="1131" />
+    </state>
+    <state x="483" y="342" key="MultipleFileMergeDialog/0.23.1920.1131@0.23.1920.1131" timestamp="1585427980158" />
+    <state x="665" y="300" key="SettingsEditor" timestamp="1585426531455">
+      <screen x="0" y="23" width="1920" height="1131" />
+    </state>
+    <state x="665" y="300" key="SettingsEditor/0.23.1920.1131@0.23.1920.1131" timestamp="1585426531455" />
+    <state x="759" y="395" key="Vcs.Push.Dialog.v2" timestamp="1585428033623">
+      <screen x="0" y="23" width="1920" height="1131" />
+    </state>
+    <state x="759" y="395" key="Vcs.Push.Dialog.v2/0.23.1920.1131@0.23.1920.1131" timestamp="1585428033622" />
+    <state x="815" y="488" key="com.intellij.ide.util.TipDialog" timestamp="1585425584975">
+      <screen x="0" y="23" width="1920" height="1131" />
+    </state>
+    <state x="815" y="488" key="com.intellij.ide.util.TipDialog/0.23.1920.1131@0.23.1920.1131" timestamp="1585425584975" />
     <state x="871" y="557" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1584651523148">
       <screen x="0" y="23" width="1920" height="1131" />
     </state>
