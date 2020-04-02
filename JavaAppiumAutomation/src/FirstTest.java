@@ -41,6 +41,19 @@ public class FirstTest {
         Assert.assertTrue("'Search…' string is not found", isTextPresentInField("Search…", By.id("org.wikipedia:id/search_src_text")));
     }
 
+    @Test
+    public void getResultsTest() {
+        waitForElemenAndClick(By.xpath("//*[contains(@text,'Search Wikipedia')]"), "Cannot find 'Search Wikipedia' input",10);
+        waitForElementAndSendKeys(By.id("org.wikipedia:id/search_src_text"), "Appium","Search input is absent",10);
+        Assert.assertTrue("No articles were found", articlesAmount() > 0);
+        waitForElemenAndClick(By.id("org.wikipedia:id/search_close_btn"),"No 'x' sign", 5);
+        Assert.assertTrue("Articles were found", articlesAmount() == 0);
+    }
+
+    private int articlesAmount(){
+        return driver.findElements(By.id("org.wikipedia:id/page_list_item_container")).size();
+    }
+
     private WebElement waitForElementPresent(By by, String error_message){
         return waitForElementPresent(by, error_message, 5);
     }
@@ -58,7 +71,7 @@ public class FirstTest {
         return element;
     }
 
-    private WebElement waitForElementByXpathAndSendKeys(By by, String value, String error_message, long timeoutInSeconds){
+    private WebElement waitForElementAndSendKeys(By by, String value, String error_message, long timeoutInSeconds){
         WebElement element = waitForElementPresent(by, error_message, timeoutInSeconds);
         element.sendKeys(value);
         return element;
