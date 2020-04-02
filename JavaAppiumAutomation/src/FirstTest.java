@@ -11,6 +11,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.net.URL;
+import java.util.List;
 
 public class FirstTest {
 
@@ -48,6 +49,26 @@ public class FirstTest {
         Assert.assertTrue("No articles were found", articlesAmount() > 0);
         waitForElemenAndClick(By.id("org.wikipedia:id/search_close_btn"),"No 'x' sign", 5);
         Assert.assertTrue("Articles were found", articlesAmount() == 0);
+    }
+
+    @Test
+    public void checkSearchWordInResults(){
+        waitForElemenAndClick(By.xpath("//*[contains(@text,'Search Wikipedia')]"), "Cannot find 'Search Wikipedia' input",10);
+        waitForElementAndSendKeys(By.id("org.wikipedia:id/search_src_text"), "JAVA","Search input is absent",10);
+        waitForElementPresent(By.id("org.wikipedia:id/page_list_item_container"),"No results via search", 10);
+        Assert.assertTrue("No articles were found", articlesAmount() > 0);
+        Assert.assertTrue("Some of articles doesn't contain JAVA in any register", isAllArticleTitlesContainsText("JAVA"));
+    }
+
+    private boolean isAllArticleTitlesContainsText(String text){
+        List<WebElement> el = driver.findElements(By.id("org.wikipedia:id/page_list_item_title"));
+        int resSize = el.size();
+        for(int i = 0; i < resSize; i++){
+            if (!el.get(i).getAttribute("text").toLowerCase().contains(text.toLowerCase())){
+                return false;
+            }
+        }
+        return true;
     }
 
     private int articlesAmount(){
