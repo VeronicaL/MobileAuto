@@ -7,6 +7,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -159,6 +160,25 @@ public class ArticlesTest {
                 "Cannot find title of article", 15);
         Assert.assertTrue("Title of second saved article and opened are differ: " +
                 secondArticleTitle + " and " + articleTitle, articleTitle.equals(secondArticleTitle));
+    }
+
+    @Test
+    public void checkArticleTitleTest(){
+        waitForElemenAndClick(By.xpath("//*[contains(@text,'Search Wikipedia')]"), "Cannot find 'Search Wikipedia' input",10);
+        waitForElementAndSendKeys(By.id("org.wikipedia:id/search_src_text"), "Appium","Search input is absent",10);
+        waitForElemenAndClick(By.xpath("//*[@resource-id='org.wikipedia:id/page_list_item_container']//*[@text='Appium']"),
+                "Cannot find needed title", 15);
+
+        assertElementPresent(By.id("org.wikipedia:id/view_page_title_text"));
+    }
+
+    private void assertElementPresent(By by){
+        try {
+            WebElement element = driver.findElement(by);
+            Assert.assertTrue("Required title is not displayed", element.isDisplayed());
+        } catch (NoSuchElementException ex){
+            Assert.assertTrue("Element title is not found for opened article", false);
+        }
     }
 
     private void assertElementPresent(By by, String errorMessage) {
