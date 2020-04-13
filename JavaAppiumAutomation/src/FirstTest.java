@@ -60,6 +60,7 @@ public class FirstTest {
         Assert.assertTrue("Some of articles doesn't contain JAVA in any register", isAllArticleTitlesContainsText("JAVA"));
     }
 
+
     private boolean isAllArticleTitlesContainsText(String text){
         List<WebElement> el = driver.findElements(By.id("org.wikipedia:id/page_list_item_title"));
         int resSize = el.size();

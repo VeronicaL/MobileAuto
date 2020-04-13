@@ -7,10 +7,7 @@ import org.junit.Before;
 
 
 import org.junit.Test;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Dimension;
-import org.openqa.selenium.ScreenOrientation;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -206,6 +203,102 @@ public class SwipeTest {
 
     }
 
+
+    @Test
+    public void checkArticleTitleTest(){
+        waitForElemenAndClick(By.xpath("//*[contains(@text,'Search Wikipedia')]"), "Cannot find 'Search Wikipedia' input",10);
+        waitForElementAndSendKeys(By.id("org.wikipedia:id/search_src_text"), "Appium","Search input is absent",10);
+        waitForElemenAndClick(By.xpath("//*[@resource-id='org.wikipedia:id/page_list_item_container']//*[@text='Appium']"),
+                "Cannot find needed title", 15);
+
+        assertElementPresent(By.id("org.wikipedia:id/view_page_title_text"));
+    }
+
+    private void assertElementPresent(By by){
+        try {
+            WebElement element = driver.findElement(by);
+            Assert.assertTrue("Required title is not displayed", element.isDisplayed());
+        } catch (NoSuchElementException ex){
+            Assert.assertTrue("Element title is not found for opened article", false);
+        }
+    }
+
+    @Test
+    public void checkManipulationWithTwoArticlesTest(){
+        String searchString = "Java";
+        waitForElemenAndClick(By.xpath("//*[contains(@text,'Search Wikipedia')]"), "Cannot find 'Search Wikipedia' input",10);
+        waitForElementAndSendKeys(By.id("org.wikipedia:id/search_src_text"), searchString,"Search input is absent",10);
+
+        waitForElemenAndClick(By.xpath("//*[@resource-id='org.wikipedia:id/page_list_item_container']//*[@text='Object-oriented programming language']"),
+                "Cannot find 'Object-oriented programming language' article", 5);
+
+        By articleTitleBy = By.id("org.wikipedia:id/view_page_title_text");
+        waitForElementPresent(articleTitleBy, "Cannot find article title", 15);
+        String articleFirstTitle = driver.findElement(articleTitleBy).getText();
+
+        waitForElemenAndClick(By.xpath("//android.widget.ImageView[@content-desc='More options']"),
+                "Cannot find button to open article options", 5);
+
+        waitForElemenAndClick(By.xpath("//*[@text='Add to reading list']"),
+                "Cannot find option to add article to reading list", 5);
+
+        waitForElemenAndClick(By.id("org.wikipedia:id/onboarding_button"),
+                "Cannot find 'Got it' tip overlay", 5);
+
+        waitForElementAndClear(By.id("org.wikipedia:id/text_input"),
+                "Cannot find input to set name of articles folder", 5);
+
+        String nameOfFolder = "Learning programming";
+
+        waitForElementAndSendKeys(By.id("org.wikipedia:id/text_input"), nameOfFolder, "Cannot put text into articles folder input", 5);
+        waitForElemenAndClick(By.xpath("//*[@text='OK']"),"Cannot press OK button", 5);
+
+        waitForElemenAndClick(By.xpath("//android.widget.ImageButton[@content-desc='Navigate up']"),"Cannot close article, cannot find X link", 5);
+
+        waitForElemenAndClick(By.xpath("//*[contains(@text,'Search Wikipedia')]"), "Cannot find 'Search Wikipedia' input",10);
+        waitForElementAndSendKeys(By.id("org.wikipedia:id/search_src_text"), searchString,"Search input is absent",10);
+
+        waitForElemenAndClick(By.xpath("//*[@resource-id='org.wikipedia:id/page_list_item_container']//*[@text='Programming language']"),
+                "Cannot find 'Object-oriented programming language' article", 5);
+
+        waitForElementPresent(articleTitleBy, "Cannot find article title", 15);
+        String articleSecondTitle = driver.findElement(articleTitleBy).getText();
+
+        waitForElemenAndClick(By.xpath("//android.widget.ImageView[@content-desc='More options']"),
+                "Cannot find button to open article options", 5);
+
+        waitForElemenAndClick(By.xpath("//*[@text='Add to reading list']"),
+                "Cannot find option to add article to reading list", 5);
+        waitForElemenAndClick(By.xpath("//*[@resource-id='org.wikipedia:id/item_title'][@text='" + nameOfFolder + "']"), "No folder " + nameOfFolder,5);
+
+        waitForElemenAndClick(By.xpath("//android.widget.ImageButton[@content-desc='Navigate up']"),"Cannot close article, cannot find X link", 5);
+
+        waitForElemenAndClick(By.xpath("//android.widget.FrameLayout[@content-desc='My lists']"),"Cannot find navigation button to My list", 5);
+        waitForElemenAndClick(By.xpath("//*[@text='" + nameOfFolder + "']"),"Cannot find created folder", 5);
+        swipeElementToLeft(By.xpath("//*[@text='Java (programming language)']"), "Cannot find saved article");
+        waitForElementNotPresent(By.xpath("//*[@text='Java (programming language)']"),"Cannot delete saved article", 5);
+
+        assertElementPresent(By.xpath("//*[@text='" + articleSecondTitle + "']"), "Second added article is absent");
+
+        waitForElemenAndClick(By.xpath("//*[@text='" + articleSecondTitle + "']"), "Second added article is absent", 5);
+
+        String articleTitle = waitForElementAndGetAttribute(
+                By.id("org.wikipedia:id/view_page_title_text"),
+                "text",
+                "Cannot find title of article", 15);
+        Assert.assertTrue("Title of second saved article and opened are differ: "+
+                articleSecondTitle +" and " + articleTitle, articleTitle.equals(articleSecondTitle));
+    }
+
+    private void assertElementPresent(By by, String errorMessage) {
+
+        int amountOfElements = getAmountOfElements(by);
+
+        if (amountOfElements == 0) {
+            String defaultMessage = "An element '" + by.toString() + "' supposed to be present";
+            throw new AssertionError(defaultMessage + " " + errorMessage);
+        }
+    }
     private String waitForElementAndGetAttribute(By by, String attribute, String errorMessage, long timeOutInSeconds){
         WebElement element = waitForElementPresent(by, errorMessage, timeOutInSeconds);
         return element.getAttribute(attribute);
