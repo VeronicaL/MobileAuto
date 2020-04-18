@@ -136,7 +136,7 @@ public class MainPageObject {
     public void assertElementPresent(By by, String errorMessage) {
         int amountOfElements = getAmountOfElements(by);
         if (amountOfElements == 0) {
-            String defaultMessage = "An element '" + by.toString() + "' supposed to be present";
+            String defaultMessage = "An element '" + by.toString() + "' supposed to be present\n";
             throw new AssertionError(defaultMessage + " " + errorMessage);
         }
     }

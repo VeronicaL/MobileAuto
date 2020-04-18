@@ -55,4 +55,28 @@ public class SearchTests extends CoreTestCase {
         assertTrue("Articles were found", searchPageObject.articlesAmount() == 0);
     }
 
+    @Test
+    public void testCheckTitleAndDecription(){
+        String searchLine = "Java";
+        String firstTitle = "Java";
+        String firstDesc = "Island of Indonesia";
+
+        String secondTitle = "JavaScript";
+        String secondDesc = "Programming language";
+
+        String thirdTitle = "Java (programming language)";
+        String thirdDesc = "Object-oriented programming language";
+
+        SearchPageObject searchPageObject = new SearchPageObject(driver);
+        searchPageObject.initSearchInput();
+        searchPageObject.typeSearchLine(searchLine);
+
+        int amountOfSearchResults = searchPageObject.getAmountOfFoundArticles();
+        assertTrue("We found too few results!", amountOfSearchResults >= 3);
+
+        searchPageObject.waitForElementByTitleAndDescription(firstTitle, firstDesc);
+        searchPageObject.waitForElementByTitleAndDescription(secondTitle, secondDesc);
+        searchPageObject.waitForElementByTitleAndDescription(thirdTitle, thirdDesc);
+    }
+
 }
