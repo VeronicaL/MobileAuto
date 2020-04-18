@@ -8,10 +8,10 @@ public class SearchPageObject extends MainPageObject {
     private static final String SEARCH_INIT_ELEMENT = "//*[contains(@text,'Search Wikipedia')]";
     private static final String SEARCH_INPUT = "//*[contains(@text,'Search Wikipedia')]";
     private static final String SEARCH_CANCEL_BUTTON = "org.wikipedia:id/search_close_btn";
+    private static final String SEARCH_CLOSE_BUTTON = "org.wikipedia:id/search_close_btn";
     private static final String SEARCH_RESULT_BY_TPL = "//*[@resource-id='org.wikipedia:id/page_list_item_container']//*[@text='{SUBSTRING}']";
     private static final String SEARCH_RESULT_ELEMENT = "//*[@resource-id='org.wikipedia:id/search_results_list']/*[@resource-id='org.wikipedia:id/page_list_item_container']";
     private static final String SEARCH_EMPTY_RESULT_ELEMENT = "//*[@text='No results found']";
-
 
     public SearchPageObject(AppiumDriver driver) {
         super(driver);
@@ -30,6 +30,10 @@ public class SearchPageObject extends MainPageObject {
 
     public void waitForCancelButtonToAppear(){
         this.waitForElementPresent(By.id(SEARCH_CANCEL_BUTTON), "Cannot find search cancel button", 5);
+    }
+
+    public void clickOnCloseButton(){
+        this.waitForElementAndClick(By.id(SEARCH_CLOSE_BUTTON),"No 'x' sign", 5);
     }
 
     public void waitForCancelButtonToDisappear(){
@@ -52,11 +56,15 @@ public class SearchPageObject extends MainPageObject {
 
     public void clickByArticleWithSubstring(String subString){
         String searchResultXpath = getResultSearchElement(subString);
-        this.waitForElementAndClick(By.xpath(searchResultXpath), "Cannot find and click search result with substring " + subString, 10);
+        this.waitForElementAndClick(By.xpath(searchResultXpath), "Cannot find and click search result with substring " + subString, 15);
     }
 
     public int getAmountOfFoundArticles(){
-        this.waitForElementPresent(By.xpath(SEARCH_RESULT_ELEMENT), "Cannot find anuthing by the request", 15);
+        this.waitForElementPresent(By.xpath(SEARCH_RESULT_ELEMENT), "Cannot find anything by the request", 15);
+        return this.getAmountOfElements(By.xpath(SEARCH_RESULT_ELEMENT));
+    }
+
+    public int articlesAmount(){
         return this.getAmountOfElements(By.xpath(SEARCH_RESULT_ELEMENT));
     }
 

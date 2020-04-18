@@ -4,11 +4,14 @@ import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.TouchAction;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.List;
+
+import static junit.framework.TestCase.assertTrue;
 
 public class MainPageObject {
 
@@ -27,10 +30,6 @@ public class MainPageObject {
             }
         }
         return true;
-    }
-
-    public int articlesAmount(){
-        return driver.findElements(By.id("org.wikipedia:id/page_list_item_container")).size();
     }
 
     public WebElement waitForElementPresent(By by, String error_message){
@@ -147,6 +146,15 @@ public class MainPageObject {
         if (amountOfElements > 0) {
             String defaultMessage = "An element '" + by.toString() + "' supposed to be not present";
             throw new AssertionError(defaultMessage + " " + errorMessage);
+        }
+    }
+
+    public void assertElementPresent(By by){
+        try {
+            WebElement element = driver.findElement(by);
+            assertTrue("Required title is not displayed", element.isDisplayed());
+        } catch (NoSuchElementException ex){
+            assertTrue("Element title is not found for opened article", false);
         }
     }
 

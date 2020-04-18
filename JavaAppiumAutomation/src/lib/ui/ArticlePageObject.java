@@ -20,7 +20,7 @@ public class ArticlePageObject extends MainPageObject{
     }
 
     public WebElement waitForTitleElement(){
-        return this.waitForElementPresent(By.id(TITLE), "Cannot find article title on page.", 15);
+        return this.waitForElementPresent(By.id(TITLE), "Cannot find article title on page.", 20);
     }
 
     public String getArticleTitle(){
@@ -34,19 +34,30 @@ public class ArticlePageObject extends MainPageObject{
 
     public void addArticleToMyList(String nameOfFolder){
         this.waitForElementAndClick(By.xpath(OPTIONS_BUTTON),
-                "Cannot find button to open article options", 5);
+                "Cannot find button to open article options", 10);
         this.waitForElementAndClick(By.xpath(OPTIONS_ADD_TO_MY_LIST_BUTTON),
-                "Cannot find option to add article to reading list", 5);
+                "Cannot find option to add article to reading list", 10);
         this.waitForElementAndClick(By.id(ADD_TO_MY_LIST_OVERLAY),
-                "Cannot find 'Got it' tip overlay", 5);
+                "Cannot find 'Got it' tip overlay", 10);
         this.waitForElementAndClear(By.id(MY_LIST_NAME_INPUT),
                 "Cannot find input to set name of articles folder", 5);
         this.waitForElementAndSendKeys(By.id(MY_LIST_NAME_INPUT), nameOfFolder, "Cannot put text into articles folder input", 5);
         this.waitForElementAndClick(By.xpath(MY_LIST_OK_BUTTON),"Cannot press OK button", 5);
     }
 
+    public void addNotFirstArticleToMyList(){
+        this.waitForElementAndClick(By.xpath(OPTIONS_BUTTON),
+                "Cannot find button to open article options", 10);
+        this.waitForElementAndClick(By.xpath(OPTIONS_ADD_TO_MY_LIST_BUTTON),
+                "Cannot find option to add article to reading list", 10);
+    }
+
     public void closeArticle(){
         this.waitForElementAndClick(By.xpath(CLOSE_ARTICLE_BUTTON),"Cannot close article, cannot find X link", 5);
+    }
+
+    public void assertTitleIsPresent(){
+        this.assertElementPresent(By.id(TITLE));
     }
 
 }

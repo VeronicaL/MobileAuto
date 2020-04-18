@@ -41,4 +41,8 @@ public class MyListsPageObject extends MainPageObject {
         this.swipeElementToLeft(By.xpath(articleXpath), "Cannot find saved article");
         this.waitForArticleToDisappearByTitle(articleTitle);
     }
+
+    public void assertArticleIsPresent(String articleTitle){
+        this.assertElementPresent(By.xpath(getSavedArticleXpathByTitle(articleTitle)), "Needed article title " + articleTitle + " is absent");
+    }
 }
