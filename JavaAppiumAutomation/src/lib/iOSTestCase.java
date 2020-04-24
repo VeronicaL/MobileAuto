@@ -1,12 +1,13 @@
 package lib;
 
 import io.appium.java_client.AppiumDriver;
-import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.ios.IOSDriver;
 import junit.framework.TestCase;
 import org.openqa.selenium.ScreenOrientation;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.net.URL;
+import java.time.Duration;
 
 public class iOSTestCase extends TestCase {
 
@@ -18,11 +19,11 @@ public class iOSTestCase extends TestCase {
         super.setUp();
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("platformName","iOS");
-        capabilities.setCapability("deviceName","iPhone SE");
-        capabilities.setCapability("platformVersion","11.3");
+        capabilities.setCapability("deviceName","iPhone 11");
+        capabilities.setCapability("platformVersion","13.4");
         capabilities.setCapability("app","/Users/veronica/!Тренинги/mobileAuto/git/JavaAppiumAutomation/apks/Wikipedia.app");
 
-        driver = new AndroidDriver(new URL(AppiumURL), capabilities);
+        driver = new IOSDriver(new URL(AppiumURL), capabilities);
         this.rotateScreenPortrait();
     }
 
@@ -41,7 +42,7 @@ public class iOSTestCase extends TestCase {
     }
 
     protected void backgroundApp(int seconds){
-        driver.runAppInBackground(seconds);
+        driver.runAppInBackground(Duration.ofSeconds(seconds));
     }
 
 }
