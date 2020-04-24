@@ -6,7 +6,7 @@ import org.openqa.selenium.By;
 public class SearchPageObject extends MainPageObject {
 
     private static final String SEARCH_INIT_ELEMENT = "//*[contains(@text,'Search Wikipedia')]";
-    private static final String SEARCH_INPUT = "//*[contains(@text,'Search Wikipedia')]";
+    private static final String SEARCH_INPUT = "//*[contains(@text,'Search…')]";
     private static final String SEARCH_CANCEL_BUTTON = "org.wikipedia:id/search_close_btn";
     private static final String SEARCH_CLOSE_BUTTON = "org.wikipedia:id/search_close_btn";
     private static final String SEARCH_RESULT_BY_TPL = "//*[@resource-id='org.wikipedia:id/page_list_item_container']//*[@text='{SUBSTRING}']";
