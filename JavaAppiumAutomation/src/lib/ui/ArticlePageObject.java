@@ -3,16 +3,16 @@ package lib.ui;
 import io.appium.java_client.AppiumDriver;
 import org.openqa.selenium.WebElement;
 
-public class ArticlePageObject extends MainPageObject{
+abstract public class ArticlePageObject extends MainPageObject{
 
-    private static final String TITLE = "id:org.wikipedia:id/view_page_title_text";
-    private static final String FOOTER_ELEMENT = "xpath://*[@text='View page in browser']";
-    private static final String OPTIONS_BUTTON= "xpath://android.widget.ImageView[@content-desc='More options']";
-    private static final String OPTIONS_ADD_TO_MY_LIST_BUTTON = "xpath://*[@text='Add to reading list']";
-    private static final String ADD_TO_MY_LIST_OVERLAY = "id:org.wikipedia:id/onboarding_button";
-    private static final String MY_LIST_NAME_INPUT = "id:org.wikipedia:id/text_input";
-    private static final String MY_LIST_OK_BUTTON = "xpath://*[@text='OK']";
-    private static final String CLOSE_ARTICLE_BUTTON = "xpath://android.widget.ImageButton[@content-desc='Navigate up']";
+    protected static  String TITLE ;
+    protected static String FOOTER_ELEMENT;
+    protected static String OPTIONS_BUTTON;
+    protected static String OPTIONS_ADD_TO_MY_LIST_BUTTON;
+    protected static String ADD_TO_MY_LIST_OVERLAY;
+    protected static String MY_LIST_NAME_INPUT;
+    protected static String MY_LIST_OK_BUTTON;
+    protected static String CLOSE_ARTICLE_BUTTON;
 
     public ArticlePageObject(AppiumDriver driver) {
         super(driver);

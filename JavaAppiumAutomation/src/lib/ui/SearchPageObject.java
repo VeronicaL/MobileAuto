@@ -3,16 +3,16 @@ package lib.ui;
 import io.appium.java_client.AppiumDriver;
 import org.openqa.selenium.By;
 
-public class SearchPageObject extends MainPageObject {
+abstract public class SearchPageObject extends MainPageObject {
 
-    private static final String SEARCH_INIT_ELEMENT = "xpath://*[contains(@text,'Search Wikipedia')]";
-    private static final String SEARCH_INPUT = "xpath://*[contains(@text,'Search…')]";
-    private static final String SEARCH_CANCEL_BUTTON = "id:org.wikipedia:id/search_close_btn";
-    private static final String SEARCH_CLOSE_BUTTON = "id:org.wikipedia:id/search_close_btn";
-    private static final String SEARCH_RESULT_BY_TPL = "xpath://*[@resource-id='org.wikipedia:id/page_list_item_container']//*[@text='{SUBSTRING}']";
-    private static final String SEARCH_RESULT_ELEMENT = "xpath://*[@resource-id='org.wikipedia:id/search_results_list']/*[@resource-id='org.wikipedia:id/page_list_item_container']";
-    private static final String SEARCH_EMPTY_RESULT_ELEMENT = "xpath://*[@text='No results found']";
-    private static final String SEARCH_RESULT_TITLE_AND_DESC_TPL = "xpath://*[@resource-id='org.wikipedia:id/page_list_item_{title_desc}'][@text='{TITLE_DESC}']";
+    protected static String SEARCH_INIT_ELEMENT = "xpath://*[contains(@text,'Search Wikipedia')]";
+    protected static String SEARCH_INPUT = "xpath://*[contains(@text,'Search…')]";
+    protected static String SEARCH_CANCEL_BUTTON = "id:org.wikipedia:id/search_close_btn";
+    protected static String SEARCH_CLOSE_BUTTON = "id:org.wikipedia:id/search_close_btn";
+    protected static String SEARCH_RESULT_BY_TPL = "xpath://*[@resource-id='org.wikipedia:id/page_list_item_container']//*[@text='{SUBSTRING}']";
+    protected static String SEARCH_RESULT_ELEMENT = "xpath://*[@resource-id='org.wikipedia:id/search_results_list']/*[@resource-id='org.wikipedia:id/page_list_item_container']";
+    protected static String SEARCH_EMPTY_RESULT_ELEMENT = "xpath://*[@text='No results found']";
+    protected static String SEARCH_RESULT_TITLE_AND_DESC_TPL = "xpath://*[@resource-id='org.wikipedia:id/page_list_item_{title_desc}'][@text='{TITLE_DESC}']";
 
     public SearchPageObject(AppiumDriver driver) {
         super(driver);

@@ -5,13 +5,14 @@ import lib.ui.ArticlePageObject;
 import lib.ui.MyListsPageObject;
 import lib.ui.NavigationUI;
 import lib.ui.SearchPageObject;
+import lib.ui.factories.SearchPageObjectFactory;
 import org.junit.Test;
 
 public class ArticleTests extends CoreTestCase {
 
     @Test
     public void testCompareArticle(){
-        SearchPageObject searchPageObject = new SearchPageObject(driver);
+        SearchPageObject searchPageObject = SearchPageObjectFactory.get(driver);
         searchPageObject.initSearchInput();
         searchPageObject.typeSearchLine("Java");
         searchPageObject.clickByArticleWithSubstring("Object-oriented programming language");
@@ -22,7 +23,7 @@ public class ArticleTests extends CoreTestCase {
 
     @Test
     public void testSwipeArticle(){
-        SearchPageObject searchPageObject = new SearchPageObject(driver);
+        SearchPageObject searchPageObject = SearchPageObjectFactory.get(driver);
         searchPageObject.initSearchInput();
         searchPageObject.typeSearchLine("Appium");
         searchPageObject.clickByArticleWithSubstring("Appium");
@@ -37,7 +38,7 @@ public class ArticleTests extends CoreTestCase {
         String firstArticleLongTitle = "Object-oriented programming language";
         String secondArticleLongTitle = "Programming language";
 
-        SearchPageObject searchPageObject = new SearchPageObject(driver);
+        SearchPageObject searchPageObject = SearchPageObjectFactory.get(driver);
         searchPageObject.initSearchInput();
         searchPageObject.typeSearchLine(searchString);
         searchPageObject.clickByArticleWithSubstring(firstArticleLongTitle);
@@ -76,7 +77,7 @@ public class ArticleTests extends CoreTestCase {
 
     @Test
     public void testCheckArticleTitle(){
-        SearchPageObject searchPageObject = new SearchPageObject(driver);
+        SearchPageObject searchPageObject = SearchPageObjectFactory.get(driver);
         searchPageObject.initSearchInput();
         String searchLine = "Appium";
         searchPageObject.typeSearchLine(searchLine);
