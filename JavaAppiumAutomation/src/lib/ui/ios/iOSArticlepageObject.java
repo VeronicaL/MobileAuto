@@ -5,10 +5,12 @@ import lib.ui.ArticlePageObject;
 
 public class iOSArticlepageObject extends ArticlePageObject {
 
-    static String TITLE = "id:Java (programming language)";
-    static String FOOTER_ELEMENT = "id:View article in browser";
-    static String OPTIONS_ADD_TO_MY_LIST_BUTTON = "id:Save for later";
-    static String CLOSE_ARTICLE_BUTTON = "xpath://android.widget.ImageButton[@content-desc='Navigate up']";
+    static {
+        TITLE = "id:Java (programming language)";
+        FOOTER_ELEMENT ="id:View article in browser";
+        OPTIONS_ADD_TO_MY_LIST_BUTTON ="id:Save for later";
+        CLOSE_ARTICLE_BUTTON ="id:Back";
+    }
 
     public iOSArticlepageObject(AppiumDriver driver) {
         super(driver);

@@ -1,6 +1,7 @@
 package lib.ui;
 
 import io.appium.java_client.AppiumDriver;
+import lib.Platform;
 import org.openqa.selenium.WebElement;
 
 abstract public class ArticlePageObject extends MainPageObject{
@@ -24,11 +25,20 @@ abstract public class ArticlePageObject extends MainPageObject{
 
     public String getArticleTitle(){
         WebElement titleElement = waitForTitleElement();
-        return titleElement.getAttribute("text");
+        if(Platform.getInstance().isAndroid()){
+            return titleElement.getAttribute("text");
+        } else {
+            return titleElement.getAttribute("name");
+        }
+
     }
 
     public void swipeToFooter(){
-        this.swipeUpToFindElement(FOOTER_ELEMENT, "Cannot find the end of article", 35);
+        if(Platform.getInstance().isAndroid()) {
+            this.swipeUpToFindElement(FOOTER_ELEMENT, "Cannot find the end of article", 40);
+        } else {
+            this.swipeUpTillElementAppear(FOOTER_ELEMENT,"Cannot find the end of article", 40);
+        }
     }
 
     public void addArticleToMyList(String nameOfFolder){
@@ -42,6 +52,10 @@ abstract public class ArticlePageObject extends MainPageObject{
                 "Cannot find input to set name of articles folder", 5);
         this.waitForElementAndSendKeys(MY_LIST_NAME_INPUT, nameOfFolder, "Cannot put text into articles folder input", 5);
         this.waitForElementAndClick(MY_LIST_OK_BUTTON,"Cannot press OK button", 5);
+    }
+
+    public void addArticlesToMySaved(){
+        this.waitForElementAndClick(OPTIONS_ADD_TO_MY_LIST_BUTTON,"Cannot find option to add article to reading list", 5);
     }
 
     public void addNotFirstArticleToMyList(){
