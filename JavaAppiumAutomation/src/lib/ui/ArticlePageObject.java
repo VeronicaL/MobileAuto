@@ -14,6 +14,7 @@ abstract public class ArticlePageObject extends MainPageObject{
     protected static String MY_LIST_NAME_INPUT;
     protected static String MY_LIST_OK_BUTTON;
     protected static String CLOSE_ARTICLE_BUTTON;
+    protected static String PLACES_AND_CLOSE;
 
     public ArticlePageObject(AppiumDriver driver) {
         super(driver);
@@ -58,6 +59,7 @@ abstract public class ArticlePageObject extends MainPageObject{
 
     public void addArticlesToMySaved(){
         this.waitForElementAndClick(OPTIONS_ADD_TO_MY_LIST_BUTTON,"Cannot find option to add article to reading list", 5);
+        this.waitForElementAndClick(PLACES_AND_CLOSE, "No popup for closing", 10);
     }
 
     public void addNotFirstArticleToMyList(){

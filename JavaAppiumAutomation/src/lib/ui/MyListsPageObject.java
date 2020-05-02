@@ -27,17 +27,18 @@ abstract public class MyListsPageObject extends MainPageObject {
     }
 
     private void waitForArticleToAppearByTitle(String articleTitle){
-        String articleXpath = getFolderXpathByName(articleTitle);
+        String articleXpath = getSavedArticleXpathByTitle(articleTitle);
+        System.out.println("articleXpath" + articleXpath);
         this.waitForElementPresent(articleXpath,"Cannot find saved article by title " + articleTitle, 15);
     }
     private void waitForArticleToDisappearByTitle(String articleTitle){
-        String articleXpath = getFolderXpathByName(articleTitle);
+        String articleXpath = getSavedArticleXpathByTitle(articleTitle);
         this.waitForElementNotPresent(articleXpath,"Saved article still present with title " + articleTitle, 15);
     }
 
     public void swipeByArticleToDelete(String articleTitle){
         this.waitForArticleToAppearByTitle(articleTitle);
-        String articleXpath = getFolderXpathByName(articleTitle);
+        String articleXpath = getSavedArticleXpathByTitle(articleTitle);
         this.swipeElementToLeft(articleXpath, "Cannot find saved article");
         if(Platform.getInstance().isIOS()){
             this.clickElementToTheRightUpperCorner(articleXpath, "Cannot find saved article");
