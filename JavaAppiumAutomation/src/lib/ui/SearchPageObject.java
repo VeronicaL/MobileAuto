@@ -2,6 +2,8 @@ package lib.ui;
 
 import io.appium.java_client.AppiumDriver;
 
+import javax.xml.bind.SchemaOutputResolver;
+
 abstract public class SearchPageObject extends MainPageObject {
 
     protected static String SEARCH_INIT_ELEMENT;
@@ -18,6 +20,10 @@ abstract public class SearchPageObject extends MainPageObject {
     }
 
     private static String getResultSearchElement(String substring){
+//        String str = SEARCH_RESULT_BY_TPL.replace("{SUBSTRING}",substring);
+//        System.out.println("substr:" + str);
+
+        //XCUIElementTypeStaticText[@name="Object-oriented programming language"]
         return SEARCH_RESULT_BY_TPL.replace("{SUBSTRING}",substring);
     }
 
@@ -54,7 +60,7 @@ abstract public class SearchPageObject extends MainPageObject {
 
     public void typeSearchLine(String search_line){
         this.waitForElementAndSendKeys(SEARCH_INPUT, search_line,
-                "Cannot find and type into search input", 5);
+                "Cannot find and type into search input", 10);
     }
 
     public void waitForSearchResult(String subString){

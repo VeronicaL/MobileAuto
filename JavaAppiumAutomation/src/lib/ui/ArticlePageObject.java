@@ -20,6 +20,8 @@ abstract public class ArticlePageObject extends MainPageObject{
     }
 
     public WebElement waitForTitleElement(){
+        //System.out.println("source:" + driver.getPageSource());
+
         return this.waitForElementPresent(TITLE, "Cannot find article title on page.", 30);
     }
 

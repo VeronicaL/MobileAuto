@@ -58,6 +58,8 @@ public class Platform {
         capabilities.setCapability("platformName","iOS");
         capabilities.setCapability("deviceName","iPhone 11");
         capabilities.setCapability("platformVersion","13.4");
+        //capabilities.setCapability("connectHardwareKeyboard", false);
+        //capabilities.setCapability("Connect Hardware Keyboard", true);
         capabilities.setCapability("app","/Users/veronica/!Тренинги/mobileAuto/git/JavaAppiumAutomation/apks/Wikipedia.app");
         return capabilities;
     }
