@@ -145,7 +145,6 @@ public class MainPageObject {
 
         TouchAction action = new TouchAction(driver);
         action.tap(PointOption.point(pointToClickX, pointToClickY)).perform();
-
     }
 
 
@@ -164,7 +163,7 @@ public class MainPageObject {
             action.moveTo(PointOption.point(leftX, middleY));
         } else {
             int offsetX = (-1 * element.getSize().getWidth());
-            action.press(PointOption.point(rightX-10, middleY))
+            action.press(PointOption.point(rightX-5, middleY + 5))
             .waitAction(WaitOptions.waitOptions(Duration.ofMillis(300)))
             .moveTo(PointOption.point(offsetX, 0));
         }

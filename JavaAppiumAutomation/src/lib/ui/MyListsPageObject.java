@@ -7,6 +7,7 @@ abstract public class MyListsPageObject extends MainPageObject {
 
     protected static String FOLDER_BY_NAME_TPL;
     protected static String ARTICLE_BY_TITLE_TPL;
+    protected static String SHARE_ARTICLE;
 
     private static String getFolderXpathByName(String nameOfFolder){
         return FOLDER_BY_NAME_TPL.replace("{FOLDER_NAME}", nameOfFolder);
@@ -28,7 +29,6 @@ abstract public class MyListsPageObject extends MainPageObject {
 
     private void waitForArticleToAppearByTitle(String articleTitle){
         String articleXpath = getSavedArticleXpathByTitle(articleTitle);
-        System.out.println("articleXpath" + articleXpath);
         this.waitForElementPresent(articleXpath,"Cannot find saved article by title " + articleTitle, 15);
     }
     private void waitForArticleToDisappearByTitle(String articleTitle){
@@ -46,6 +46,14 @@ abstract public class MyListsPageObject extends MainPageObject {
             this.swipeElementToLeft(articleXpath + "/..", "Cannot find saved article");
             this.clickElementToTheRightUpperCorner(articleXpath, "Cannot find saved article");
         }
+        this.waitForArticleToDisappearByTitle(articleTitle);
+    }
+
+    public void shareArticle(String articleTitle){
+        this.waitForArticleToAppearByTitle(articleTitle);
+        String articleXpath = getSavedArticleXpathByTitle(articleTitle);
+        this.swipeElementToLeft(articleXpath + "/..", "Cannot find saved article");
+        this.waitForElementAndClick(SHARE_ARTICLE, "Here is no share button", 10);
         this.waitForArticleToDisappearByTitle(articleTitle);
     }
 

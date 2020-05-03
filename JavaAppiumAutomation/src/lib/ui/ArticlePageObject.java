@@ -59,7 +59,12 @@ abstract public class ArticlePageObject extends MainPageObject{
 
     public void addArticlesToMySaved(){
         this.waitForElementAndClick(OPTIONS_ADD_TO_MY_LIST_BUTTON,"Cannot find option to add article to reading list", 5);
+
         this.waitForElementAndClick(PLACES_AND_CLOSE, "No popup for closing", 10);
+    }
+
+    public void addMoreThenOneArticleToMySaved(){
+        this.waitForElementAndClick(OPTIONS_ADD_TO_MY_LIST_BUTTON,"Cannot find option to add article to reading list", 5);
     }
 
     public void addNotFirstArticleToMyList(){
