@@ -36,6 +36,7 @@ public class ArticleTests extends CoreTestCase {
         articlePageObject.swipeToFooter();
     }
 
+    //todo
     @Test
     public void testCheckManipulationWithTwoArticles(){
         String searchString = "Java";

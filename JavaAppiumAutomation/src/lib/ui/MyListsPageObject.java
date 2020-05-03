@@ -39,8 +39,11 @@ abstract public class MyListsPageObject extends MainPageObject {
     public void swipeByArticleToDelete(String articleTitle){
         this.waitForArticleToAppearByTitle(articleTitle);
         String articleXpath = getSavedArticleXpathByTitle(articleTitle);
-        this.swipeElementToLeft(articleXpath, "Cannot find saved article");
+        if(Platform.getInstance().isAndroid()){
+            this.swipeElementToLeft(articleXpath, "Cannot find saved article");
+        }
         if(Platform.getInstance().isIOS()){
+            this.swipeElementToLeft(articleXpath + "/..", "Cannot find saved article");
             this.clickElementToTheRightUpperCorner(articleXpath, "Cannot find saved article");
         }
         this.waitForArticleToDisappearByTitle(articleTitle);
