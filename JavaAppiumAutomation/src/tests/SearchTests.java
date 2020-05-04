@@ -56,7 +56,6 @@ public class SearchTests extends CoreTestCase {
         assertTrue("Articles were found", searchPageObject.articlesAmount() == 0);
     }
 
-    //todo
     @Test
     public void testCheckTitleAndDecription(){
         String searchLine = "Java";

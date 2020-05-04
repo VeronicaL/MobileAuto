@@ -1,8 +1,7 @@
 package lib.ui;
 
 import io.appium.java_client.AppiumDriver;
-
-import javax.xml.bind.SchemaOutputResolver;
+import lib.Platform;
 
 abstract public class SearchPageObject extends MainPageObject {
 
@@ -20,10 +19,6 @@ abstract public class SearchPageObject extends MainPageObject {
     }
 
     private static String getResultSearchElement(String substring){
-//        String str = SEARCH_RESULT_BY_TPL.replace("{SUBSTRING}",substring);
-//        System.out.println("substr:" + str);
-
-        //XCUIElementTypeStaticText[@name="Object-oriented programming language"]
         return SEARCH_RESULT_BY_TPL.replace("{SUBSTRING}",substring);
     }
 
@@ -93,9 +88,19 @@ abstract public class SearchPageObject extends MainPageObject {
 
     public void waitForElementByTitleAndDescription(String title, String description){
         System.out.println("We are searching for title: " + title + " and desc: " + description);
-        this.assertElementPresent(getTitleSearchElement(title),
-                "Here is no article with title '" + title + "' among search results.");
-        this.assertElementPresent(getDescSearchElement(description),
-                "Here is no article with description '" + description + "' among search results.");
+        if(Platform.getInstance().isAndroid()){
+            this.assertElementPresent(getTitleSearchElement(title),
+                    "Here is no article with title '" + title + "' among search results.");
+            this.assertElementPresent(getDescSearchElement(description),
+                    "Here is no article with description '" + description + "' among search results.");
+        } else {
+            String xpathTitle = SEARCH_RESULT_TITLE_AND_DESC_TPL.replace("{TITLE_DESC}", title);
+            this.assertElementPresent(xpathTitle,
+                    "Here is no article with title '" + title + "' among search results.");
+            String xpathDesc = SEARCH_RESULT_TITLE_AND_DESC_TPL.replace("{TITLE_DESC}", description);
+            this.assertElementPresent(xpathDesc,
+                    "Here is no article with description '" + description + "' among search results.");
+        }
     }
+
 }
